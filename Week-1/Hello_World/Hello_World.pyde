@@ -1,15 +1,18 @@
-# Erzeuge ein quadratisches Fenster
-# mit Hintergrundfarbe RebeccaPurple
+# Copyright 2021 Roland Richter
+# Hello World
+
+# Create a quadratic display window
+# with RebeccaPurple background
 size(500, 500)
 background("#663399")            
 
-# Mache Text besser lesbar: 
-# zentriert, größer und weiß
+# Make text more readable: 
+# centered, large and white
 textAlign(CENTER)
 textSize(24)
 fill(255)
     
-# Begrüße alle etwas über der Mitte:
-# 50% Fensterbreite, 30% Fensterhöhe
-text("Hallo, Khevis!", 
+# Say hello to everyone at
+# 50 % width and 30 % height
+text("Hello, class!", 
      0.5 * width, 0.3 * height)

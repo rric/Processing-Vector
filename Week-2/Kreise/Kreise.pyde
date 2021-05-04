@@ -1,3 +1,6 @@
+# Copyright 2021 Roland Richter
+# Zeichnet Kreise an verschiedenen Koordinaten
+
 # Erzeuge ein quadratisches Fenster
 size(500, 500)
 # Farbe OrangeRed auf SkyBlue

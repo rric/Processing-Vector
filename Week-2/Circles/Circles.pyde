@@ -1,3 +1,6 @@
+# Copyright 2021 Roland Richter
+# Draws circles at different coordinates
+
 # Create a quadratic display window
 size(500, 500)
 # Use SkyBlue and OrangeRed
