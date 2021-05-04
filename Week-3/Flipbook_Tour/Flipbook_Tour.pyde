@@ -1,18 +1,20 @@
 # Copyright 2021 Roland Richter
 # Demonstration of the "flip book" effect
 
-# TOUR-1 Here, the setup() function is defined. setup() is called only
-#   once, at program start-up. The keyword `def` is short for 'define
-#   a function'. Note the colon ':' at the end of the line is necessary.
+# TOUR-1 Most Processing sketches define two functions:
+#   - setup(), which is called only once at program start-up
+#   - draw(), which, by default, is called about 60 times per sec;
+#     with each call, the display frame is re-drawn; this results in a 
+#     "flip book" effect.
+#
+#   Here is the definition of setup(): the keyword `def` is short for
+#   'define a function'; the line has to end with a colon ':'.
 def setup():
     size(600, 400)
     # frameRate(60)   # <- try out and change it
 
-# TOUR-2 Here, draw() is defined. It is called about 60 times per sec
-#   by default. Each time, the frame is re-drawn, this results in a 
-#   "flip book" effect.
-#   Both the setup() and draw() functions do not have any parameters,
-#   hence their argument list `()` is empty.
+# TOUR-2 Here, draw() is defined. Note that both setup() and draw() do
+#   not have any parameters, hence their parameter list `()` is empty.
 def draw():
     background("#87CEEB") # "Light sky blue"
 

@@ -1,19 +1,20 @@
 # Copyright 2021 Roland Richter
 # Demonstration des "Daumenkino"-Effekts
 
-# TOUR-1 Hier wird die Funktion setup() definiert. setup() wird nur
-#   einmal aufgerufen: beim Programmstart. Das Schlüsselwort `def` ist 
-#   die Abkürzung für 'define a function'. Der Doppelpunkt ':' am Ende 
-#   der Zeile ist notwendig.
+# TOUR-1 Die meisten Processing-Programme definieren zwei Funktionen:
+#   - setup(), das genau einmal beim Programmstart aufgerufen wird
+#   - draw(), das standardmäßig ca. 60 mal pro Sekunde aufgerufen wird;
+#     bei jedem Aufruf wird die Anzeige neu gemalt; dies führt zu einem 
+#     "Daumenkino"-Effekt.
+#
+#   Hier wird setup() definiert: das Schlüsselwort `def` bedeutet
+#   'define a function'; am Zeilenende muss ein Doppelpunkt ':' stehen.
 def setup():
     size(600, 400)
     # frameRate(60)   # <- probier's aus
 
-# TOUR-2 Hier wird draw() definiert, das standardmäßig etwa 60 Mal pro
-#   Sekunde aufgerufen wird. Da jedes Mal ein neues Bild gemalt wird,
-#   entsteht der "Daumenkino"-Effekt.
-#   Die Funktionen setup() und draw() haben keine Parameter, daher ist
-#   ihre Parameterliste `()` leer.
+# TOUR-2 Hier wird draw() definiert. Die Funktionen setup() und draw()
+#   haben keine Parameter, daher ist ihre Parameterliste `()` leer.
 def draw():
     background("#87CEEB") # "Light sky blue"
 
