@@ -58,4 +58,5 @@ def drawSunPlus(x, y):
 #   hat: nämlich die Farbe, mit der der Kreis gemalt wird.
 
 # HAUSÜBUNG Erstelle eine Funktion drawSomeThing(), um irgendetwas zu 
-#   malen: einen Fußball, das Gesicht eines Aliens, einen Marienkäfer ...
+#   malen: einen Fußball, einen Alien, einen Marienkäfer ...
+#   Ein Beispiel findest du auf https://py.processing.org/tutorials/drawing/

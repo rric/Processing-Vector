@@ -57,4 +57,5 @@ def drawSunPlus(x, y):
 #   namely the color to draw the circle with
 
 # HOMEWORK Create a function drawSomeThing() to draw anything you 
-#   like: a football, an alien face, a ladybug ...
+#   like: a football, an alien, a ladybug ...
+#   For one example, see https://py.processing.org/tutorials/drawing/
