@@ -11,12 +11,12 @@
 #   'define a function'; am Zeilenende muss ein Doppelpunkt ':' stehen.
 def setup():
     size(600, 400)
-    # frameRate(60)   # <- probier's aus
+    # frameRate(60)   # <- Probier's aus und ändere die Bildrate
 
 # TOUR-2 Hier wird draw() definiert. Die Funktionen setup() und draw()
 #   haben keine Parameter, daher ist ihre Parameterliste `()` leer.
 def draw():
-    background("#87CEEB") # "Light sky blue"
+    background("#87CEEB") # <- Was ist, wenn du diese Zeile kommentierst?
 
     # TOUR-4 Hier wird die Funktion `drawSunPlus` mehrmals verwendet, 
     #   um einige Sonnen zu zeichnen. Jedes Mal muss man (genau) zwei

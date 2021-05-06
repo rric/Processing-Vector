@@ -11,12 +11,12 @@
 #   'define a function'; the line has to end with a colon ':'.
 def setup():
     size(600, 400)
-    # frameRate(60)   # <- try out and change it
+    # frameRate(60)   # <- try out and change the frame rate
 
 # TOUR-2 Here, draw() is defined. Note that both setup() and draw() do
 #   not have any parameters, hence their parameter list `()` is empty.
 def draw():
-    background("#87CEEB") # "Light sky blue"
+    background("#87CEEB") # <- What happens if you comment this line?
 
     # TOUR-4 Here, function `drawSunPlus` is used several times to
     #   draw some suns. In each case, one has to pass (exactly) two
