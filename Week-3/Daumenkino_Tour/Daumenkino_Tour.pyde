@@ -57,6 +57,10 @@ def drawSunPlus(x, y):
 # AUFGABE-2 Erweitere drawSunPlus so, dass es einen dritten Parameter
 #   hat: nämlich die Farbe, mit der der Kreis gemalt wird.
 
-# HAUSÜBUNG Erstelle eine Funktion drawSomeThing(), um irgendetwas zu 
-#   malen: einen Fußball, einen Alien, einen Marienkäfer ...
-#   Ein Beispiel findest du auf https://py.processing.org/tutorials/drawing/
+# HAUSÜBUNG Erstelle eine Funktion drawSomeThing(x, y), um an der
+#   Position (x, y) ein anderes Objekt (statt der "Sonne") zu malen: 
+#   einen Fußball, einen Alien, einen Marienkäfer, ... Ein Beispiel 
+#   ist ganz unten auf https://py.processing.org/tutorials/drawing/ 
+#
+#   Das Objekt soll an der Mausposition (und evtl. an anderen
+#   Positionen) angezeigt werden.

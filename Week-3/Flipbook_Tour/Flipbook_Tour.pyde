@@ -56,6 +56,7 @@ def drawSunPlus(x, y):
 # EXERCISE-2 Extend drawSunPlus such that it takes a third parameter,
 #   namely the color to draw the circle with
 
-# HOMEWORK Create a function drawSomeThing() to draw anything you 
-#   like: a football, an alien, a ladybug ...
-#   For one example, see https://py.processing.org/tutorials/drawing/
+# HOMEWORK Create a function drawSomeThing(x, y) to draw another
+#   object at position (x, y), instead of the orange "sun":
+#   a football, an alien, a ladybug ... You can find one example at
+#   the very bottom of https://py.processing.org/tutorials/drawing/
