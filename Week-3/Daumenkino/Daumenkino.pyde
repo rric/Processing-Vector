@@ -15,7 +15,7 @@
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 def setup():
-    size(600, 400)
+    size(800, 600)
     # frameRate(60)   # <- probier's aus
 
 

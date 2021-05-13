@@ -10,7 +10,7 @@
 #   Here is the definition of setup(): the keyword `def` is short for
 #   'define a function'; the line has to end with a colon ':'.
 def setup():
-    size(600, 400)
+    size(800, 600)
     # frameRate(60)   # <- try out and change the frame rate
 
 # TOUR-2 Here, draw() is defined. Note that both setup() and draw() do

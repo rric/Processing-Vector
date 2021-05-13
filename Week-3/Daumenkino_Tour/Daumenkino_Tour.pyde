@@ -10,7 +10,7 @@
 #   Hier wird setup() definiert: das Schlüsselwort `def` bedeutet
 #   'define a function'; am Zeilenende muss ein Doppelpunkt ':' stehen.
 def setup():
-    size(600, 400)
+    size(800, 600)
     # frameRate(60)   # <- Probier's aus und ändere die Bildrate
 
 # TOUR-2 Hier wird draw() definiert. Die Funktionen setup() und draw()
