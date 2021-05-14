@@ -22,9 +22,9 @@ def setup():
 def draw():
     background("#87CEEB") # "Light sky blue"
 
-    drawSunPlus(42, 84/2)
-    drawSunPlus(width-42, mouseY)
-    drawSunPlus(mouseX, mouseY)
+    drawAlien(42, 84/2)
+    drawAlien(width-42, mouseY)
+    drawAlien(mouseX, mouseY)
 
     # Displays current frame rate and count
     textSize(28)
@@ -33,19 +33,26 @@ def draw():
     text(nf(frameRate, 1, 1) + " fps", 8, height-20)
 
 
-# Draws an orange sun with a "+" mark at the center
-def drawSunPlus(x, y):
-    noStroke()
-    fill("#FF4500") # "Orange-red"
-    circle(x, y, 42)
-    
-    # Draw a black "+" mark at position (x, y)
-    stroke(0)
-    line(x-8, y, x+8, y)
-    line(x, y-8, x, y+8)
-
-
 # HOMEWORK Create a function drawSomeThing(x, y) to draw another
 #   object at position (x, y), instead of the orange "sun":
 #   a football, an alien, a ladybug ... You can find one example at
 #   the very bottom of https://py.processing.org/tutorials/drawing/
+
+# Draws Ellen, the Alien, at the given position (x, y)
+def drawAlien(x, y):
+    # draw the head
+    strokeWeight(2)
+    stroke(0)
+    fill("#32CD32")
+    circle(x, y, 42)
+    
+    # draw both eyes
+    fill("#FFD700")
+    circle(x-10, y-10, 12)
+    circle(x+10, y-10, 12)
+    
+    # draw mouth and antennas
+    line(x-6, y+10, x+6, y+10)
+    line(x-30, y-30, x-15, y-15)
+    line(x+30, y-30, x+15, y-15)
+    strokeWeight(1)

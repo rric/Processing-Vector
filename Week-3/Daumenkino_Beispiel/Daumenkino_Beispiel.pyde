@@ -22,9 +22,9 @@ def setup():
 def draw():
     background("#87CEEB") # "Light sky blue"
 
-    drawSunPlus(42, 84/2)
-    drawSunPlus(width-42, mouseY)
-    drawSunPlus(mouseX, mouseY)
+    drawAlien(42, 84/2)
+    drawAlien(width-42, mouseY)
+    drawAlien(mouseX, mouseY)
 
     # Zeigt die momentane Bildanzahl und Bildrate an
     textSize(28)
@@ -33,17 +33,6 @@ def draw():
     text(nf(frameRate, 1, 1) + " fps", 8, height-20)
 
 
-# Malt eine orange Sonne mit einem "+"-Zeichen in der Mitte
-def drawSunPlus(x, y):
-    noStroke()
-    fill("#FF4500") # "Orange-red"
-    circle(x, y, 42)
-    
-    # Male ein schwarzes "+"-Zeichen an Position (x, y)
-    stroke(0)
-    line(x-8, y, x+8, y)
-    line(x, y-8, x, y+8)
-
 # HAUSÜBUNG Erstelle eine Funktion drawSomeThing(x, y), um an der
 #   Position (x, y) ein anderes Objekt (statt der "Sonne") zu malen: 
 #   einen Fußball, einen Alien, einen Marienkäfer, ... Ein Beispiel 
@@ -51,3 +40,22 @@ def drawSunPlus(x, y):
 #
 #   Das Objekt soll an der Mausposition (und evtl. an anderen
 #   Positionen) angezeigt werden.
+
+# Malt Ellen, den Alien, an der Position (x, y)
+def drawAlien(x, y):
+    # male den Kopf
+    strokeWeight(2)
+    stroke(0)
+    fill("#32CD32")
+    circle(x, y, 42)
+    
+    # male beide Augen
+    fill("#FFD700")
+    circle(x-10, y-10, 12)
+    circle(x+10, y-10, 12)
+    
+    # male Mund und Fühler
+    line(x-6, y+10, x+6, y+10)
+    line(x-30, y-30, x-15, y-15)
+    line(x+30, y-30, x+15, y-15)
+    strokeWeight(1)
