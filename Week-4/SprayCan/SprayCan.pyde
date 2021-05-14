@@ -18,12 +18,16 @@
 # 540px-David_by_Michelangelo_JBU06.JPG by Jörg Bittner Unna, 
 # CC BY 3.0, https://commons.wikimedia.org/w/index.php?curid=38304749
 
-# positions and colors of the color buttons
-firstX, firstY = 470, 30
+# positions, colors and letters of the color buttons
+firstX, firstY = 410, 30
 firstColor = color(255, 99, 71)   # Tomato
+firstLetter = 'R'
 
-secondX, secondY = 510, 30
+secondX, secondY = 460, 30
 secondColor = color(0, 255, 0)    # Lime
+secondLetter = 'G'
+
+buttonRadius = 21
 
 # radius, color, and opacity of the brush
 brushRadius = 19
@@ -52,7 +56,7 @@ def draw():
 
     # paint on background image, but NOT on buttons
     if mousePressed:
-        if not (mouseX >= 440 and mouseY <= 70):
+        if not (mouseX >= 380 and mouseY <= 70):
             fill(brushColor, opacity)
             circle(mouseX, mouseY, brushRadius)
 
@@ -62,9 +66,9 @@ def mouseClicked():
 
     # if one of the color buttons was clicked,
     # select the brush color accordingly
-    if dist(mouseX, mouseY, firstX, firstY) < brushRadius:
+    if dist(mouseX, mouseY, firstX, firstY) < buttonRadius:
         brushColor = firstColor
-    elif dist(mouseX, mouseY, secondX, secondY) < brushRadius:
+    elif dist(mouseX, mouseY, secondX, secondY) < buttonRadius:
         brushColor = secondColor
 
     drawButtons()
@@ -73,10 +77,16 @@ def mouseClicked():
 # Draws the buttons to select the brush color; the button which
 # is selected is indicated with a white border
 def drawButtons():
+    textSize(24)
+    textAlign(CENTER, CENTER)
     stroke(255) if brushColor == firstColor else stroke(0)
     fill(firstColor)
-    circle(firstX, firstY, brushRadius)
+    circle(firstX, firstY, buttonRadius)
+    fill(255) if brushColor == firstColor else fill(0)
+    text(firstLetter, firstX+1, firstY-4)
 
     stroke(255) if brushColor == secondColor else stroke(0)
     fill(secondColor)
-    circle(secondX, secondY, brushRadius)
+    circle(secondX, secondY, buttonRadius)
+    fill(255) if brushColor == secondColor else fill(0)
+    text(secondLetter, secondX+1, secondY-4)

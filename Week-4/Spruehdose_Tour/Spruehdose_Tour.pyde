@@ -28,15 +28,19 @@
 #   verändern, muss man das Schlüsselwort `global` verwenden:
 #   siehe https://py.processing.org/reference/globals.html
 
-# Positionen und Farben der Schalter
-firstX, firstY = 470, 30
+# Positionen, Farben und Buchstaben der Schalter
+firstX, firstY = 410, 30
 firstColor = color(255, 99, 71)   # Tomato
+firstLetter = 'R'
 
-secondX, secondY = 510, 30
+secondX, secondY = 460, 30
 secondColor = color(0, 255, 0)    # Lime
+secondLetter = 'G'
+
+buttonRadius = 21
 
 # Radius, Farbe und Deckkraft des Pinsels
-brushRadius = 19
+brushRadius = 15
 brushColor = firstColor
 opacity = 24
 
@@ -67,7 +71,7 @@ def draw():
     #     Eck befindet, wo ja auch die Tasten sind: 
     #     nur falls das NICHT der Fall ist, wird ins Bild gemalt
     if mousePressed:
-        if not (mouseX >= 440 and mouseY <= 70):
+        if not (mouseX >= 370 and mouseY <= 70):
             fill(brushColor, opacity)
             circle(mouseX, mouseY, brushRadius)
 
@@ -80,9 +84,9 @@ def mouseClicked():
     #   Der Befehl dist(x1, y1, x2, y2) berechnet die Distanz zwischen 
     #   den Punkten (x1, y1) und (x2, y2). Wie wird das gemacht?
     #   Tipp: Satz des Pythagoras
-    if dist(mouseX, mouseY, firstX, firstY) < brushRadius:
+    if dist(mouseX, mouseY, firstX, firstY) < buttonRadius:
         brushColor = firstColor
-    elif dist(mouseX, mouseY, secondX, secondY) < brushRadius:
+    elif dist(mouseX, mouseY, secondX, secondY) < buttonRadius:
         brushColor = secondColor
         
     drawButtons()
@@ -91,6 +95,9 @@ def mouseClicked():
 # Zeichnet die Schalter zum Auswählen der Pinsel-Farbe;
 # der ausgewählte Schalter wird durch einen weißen Rand angezeigt.
 def drawButtons():
+    textSize(24)
+    textAlign(CENTER, CENTER)
+    
     # TOUR-5 Der ausgewählte Schalter soll durch einen weißen Rand
     #   angezeigt werden; der nicht ausgewählte durch einen schwarzen.
     #
@@ -108,8 +115,17 @@ def drawButtons():
     #       stroke(0)
     stroke(255) if brushColor == firstColor else stroke(0)
     fill(firstColor)
-    circle(firstX, firstY, brushRadius)
+    circle(firstX, firstY, buttonRadius)
+    fill(255) if brushColor == firstColor else fill(0)
+    text(firstLetter, firstX+1, firstY-4)
 
     stroke(255) if brushColor == secondColor else stroke(0)
     fill(secondColor)
-    circle(secondX, secondY, brushRadius)
+    circle(secondX, secondY, buttonRadius)
+    fill(255) if brushColor == secondColor else fill(0)
+    text(secondLetter, secondX+1, secondY-4)
+    
+# HAUSÜBUNG Erweitere drawButtons() um einen dritten Schalter
+#   mit einer weiteren Farbe.
+#   Such dir ein anderes Hintergrundbild aus und erstelle eine
+#   "Übermalung" davon.
