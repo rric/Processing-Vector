@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
+from ShowHelpers import *
+
 # positions of the objects which will be moved
 firstPos  = PVector(42, 420)
 secondPos = PVector(420, 420)
@@ -30,46 +32,26 @@ def draw():
     # point (at mouse position) in shades of blue
     beginPos = PVector(width/2, height/2)
     endPos   = PVector(mouseX, mouseY)
-    drawCircle(beginPos, "#4682B4", "B")
-    drawCircle(endPos,   "#87CEEB", "E")
+    showPosition(beginPos, "#4682B4", "B")
+    showPosition(endPos,   "#87CEEB", "E")
     
     # the vector from beginning point B to end point E is the
     # difference of "end point" minus "beginning point"
     vecBtoE = endPos - beginPos      # vector subtraction
-    arrow(beginPos, vecBtoE, "vector B->E")
+    showVector(beginPos, vecBtoE, "vector B->E")
 
     # draw objects both at original and at moved positions
     drawAlien(firstPos)
     drawAlien(firstPos + vecBtoE)    # vector addition
-    arrow(firstPos, vecBtoE, "vector B->E")
+    showVector(firstPos, vecBtoE, "vector B->E")
 
     drawAlien(secondPos)
     drawAlien(secondPos + vecBtoE)   # vector addition
-    arrow(secondPos, vecBtoE, "vector B->E")
+    showVector(secondPos, vecBtoE, "vector B->E")
 
     drawAlien(thirdPos)
     drawAlien(thirdPos + vecBtoE)    # vector addition
-    arrow(thirdPos, vecBtoE, "vector B->E")
-
-
-# Draws a circle with a "+" mark, "Orange-red" by default,
-# and places a letter nearby the "+" mark
-def drawCircle(pos, col = "#FF4500", letter = ""):
-    noStroke()
-    fill(col)
-    circle(pos.x, pos.y, 42)
-    
-    # draw a black "+" mark at position (x, y)
-    stroke(0)
-    fill(0)
-    line(pos.x-8, pos.y, pos.x+8, pos.y)
-    line(pos.x, pos.y-8, pos.x, pos.y+8)
-    
-    # if given, place the letter nearby the "+" mark
-    if letter:
-        textSize(14)
-        textAlign(LEFT, TOP)
-        text(letter, pos.x+2, pos.y)
+    showVector(thirdPos, vecBtoE, "vector B->E")
 
 
 # Draws Ellen, the Alien, at the given position (x, y)
@@ -90,37 +72,3 @@ def drawAlien(pos):
     line(pos.x-30, pos.y-30, pos.x-15, pos.y-15)
     line(pos.x+30, pos.y-30, pos.x+15, pos.y-15)
     strokeWeight(1)
-    
-    
-# Draws the vector (vx, vy) as an arrow -->, from the begining point 
-# (bx, by) to the end point, and places a label to the middle of it
-def arrow(begP, vec, label=""):
-    endP = begP + vec
-
-    # the arrow head is drawn as a triangle; compute the coordinates
-    # of its points here
-    angle = PVector(vec.x, -vec.y).heading()
-    leftEnd = endP - 15 * PVector.fromAngle(-angle + 0.4)
-    rightEnd = endP - 15 * PVector.fromAngle(-angle - 0.4)
-
-    stroke(255)
-    fill(255)
-    line(begP.x, begP.y, endP.x, endP.y)
-    triangle(endP.x, endP.y, leftEnd.x, leftEnd.y, rightEnd.x, rightEnd.y)
-
-    # translate, rotate, and center the label w.r.t. the arrow
-    if label:
-        pushMatrix()
-        
-        translate(lerp(begP.x, endP.x, 0.5), lerp(begP.y, endP.y, 0.5))
-        if angle > -HALF_PI and angle < HALF_PI:
-            rotate(-angle)
-        else:
-            rotate(PI-angle)
-        
-        textSize(14)
-        textAlign(CENTER, CENTER)
-        text(label, 0, -9)
-        text("(" + nfp(int(vec.x), 0) + "," 
-                 + nfp(int(vec.y), 0) + ")", 0, 9)
-        popMatrix()
