@@ -3,6 +3,9 @@
 # Jakob Hinterkörner, Emilia Hochreiter, Christian Kaukal, Lena Lorenz, Luisa Mayr, 
 # Sina Mayr, Nina Müllner, Anton Pargfrieder, Eliabeth Schimana, Felix Steiner, 
 # Sophie Zehetner, Roland Richter
+# 
+# Sammlung aller abgegebenen und GPL-lizenzierten "drawSomething()"-Funktionen
+#
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -85,3 +88,6 @@ def draw():
     
     offsetX, offsetY = -200, -220
     drawanalien(mouseX + offsetX, mouseY + offsetY, "#AAAA00")
+    
+# HAUSÜBUNG Verwende einige Funktionen aus der Sammlung, um ein Bild zu erstellen,
+#   wie beispielsweise Gruppenbild mit Aliens, Haus mit Garten, oder ähnliches
