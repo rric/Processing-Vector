@@ -1,6 +1,8 @@
-# Copyright 2021 Paula Bauer, Leonie Fehrer, Christian Kaukal, Lena Lorenz,
-#   Luisa Mayr, Nina Müllner, Eliabeth Schimana, Roland Richter
-# und -- hoffentlich -- bald noch vielen, vielen anderen!
+# Copyright 2021 Besare Abdulai, Elisa Antelmann, Paula Bauer, Konstantin Bayerl, 
+# Mithad Bogner, Janine Davalos Herrera, Niklas Dünser, Leonie Fehrer, Sven Gruber,
+# Jakob Hinterkörner, Emilia Hochreiter, Christian Kaukal, Lena Lorenz, Luisa Mayr, 
+# Sina Mayr, Nina Müllner, Anton Pargfrieder, Eliabeth Schimana, Felix Steiner, 
+# Sophie Zehetner, Roland Richter
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,24 +26,62 @@ def setup():
 def draw():
     background("#87CEEB") # "Light sky blue"
 
+    offsetX, offsetY = +120, -50
+    drawLadyBird(mouseX + offsetX, mouseY + offsetY)
+
     offsetX, offsetY = -120, -40
     drawTeddyBear(mouseX + offsetX, mouseY + offsetY)
 
     offsetX, offsetY = -80, +90
     draw_duck(mouseX + offsetX, mouseY + offsetY, 1.0)
 
-    offsetX, offsetY = 120, +70
-    drawHouse(mouseX + offsetX, mouseY + offsetY, "#E92DED")
+    offsetX, offsetY = +170, +90
+    drawBesaresHouse(mouseX + offsetX, mouseY + offsetY)
 
-    offsetX, offsetY = 60, -50
+    offsetX, offsetY = -370, +90
+    drawLenasHouse(mouseX + offsetX, mouseY + offsetY, "#8120A7")
+
+    offsetX, offsetY = +60, -50
     drawLadybug(mouseX + offsetX, mouseY + offsetY)
     
+    offsetX, offsetY = -300, -170
+    drawEmiliasAlien(mouseX + offsetX, mouseY + offsetY)
+    
+    offsetX, offsetY = -300, +80
+    drawLeoniesAlien(mouseX + offsetX, mouseY + offsetY) 
+    
     offsetX, offsetY = -350, +40
-    drawLeoniesAlien(mouseX + offsetX, mouseY + offsetY)    
+    drawJakobsAlien(mouseX + offsetX, mouseY + offsetY)    
     
     offsetX, offsetY = -200, +50
     drawNinasAlien(mouseX + offsetX, mouseY + offsetY)
     
-    offsetX, offsetY = 280, +60
+    offsetX, offsetY = -230, -220
+    Zeichnung(mouseX + offsetX, mouseY + offsetY)
+    
+    offsetX, offsetY = +280, +60
     drawMyCactus(mouseX + offsetX, mouseY + offsetY)
     
+    offsetX, offsetY = +320, +70
+    shamrock(mouseX + offsetX, mouseY + offsetY)
+    
+    offsetX, offsetY = +300, -170
+    drawEye(mouseX + offsetX, mouseY + offsetY)
+    
+    offsetX, offsetY = +370, -140
+    drawIllusion(mouseX + offsetX, mouseY + offsetY)
+    
+    offsetX, offsetY = +0, -240
+    drawSunPlus(mouseX + offsetX, mouseY + offsetY)
+    
+    offsetX, offsetY = +50, -220
+    drawKonstantinsAlien(mouseX + offsetX, mouseY + offsetY)
+    
+    offsetX, offsetY = -50, -220
+    drawAntonsAlien(mouseX + offsetX, mouseY + offsetY)
+    
+    offsetX, offsetY = -150, -220
+    drawSinasAlien(mouseX + offsetX, mouseY + offsetY, "#00BB00")
+    
+    offsetX, offsetY = -200, -220
+    drawanalien(mouseX + offsetX, mouseY + offsetY, "#AAAA00")

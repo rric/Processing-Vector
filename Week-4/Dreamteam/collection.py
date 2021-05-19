@@ -1,7 +1,9 @@
 # encoding: utf-8
-# Copyright 2021 Paula Bauer, Leonie Fehrer, Christian Kaukal, Lena Lorenz,
-#   Luisa Mayr, Nina Müllner, Eliabeth Schimana, Roland Richter
-# und -- hoffentlich -- bald noch vielen, vielen anderen!
+# Copyright 2021 Besare Abdulai, Elisa Antelmann, Paula Bauer, Konstantin Bayerl, 
+# Mithad Bogner, Janine Davalos Herrera, Niklas Dünser, Leonie Fehrer, Sven Gruber,
+# Jakob Hinterkörner, Emilia Hochreiter, Christian Kaukal, Lena Lorenz, Luisa Mayr, 
+# Sina Mayr, Nina Müllner, Anton Pargfrieder, Eliabeth Schimana, Felix Steiner, 
+# Sophie Zehetner, Roland Richter
 # 
 # Sammlung aller abgegebenen und GPL-lizenzierten "drawSomething()"-Funktionen
 #
@@ -20,12 +22,32 @@
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 # (Besare Abdulai)
-def drawNothingYet01(x, y):
-    pass
+def drawBesaresHouse(x, y): 
+    rectMode(CORNER)
+    fill("#E04444")
+    rect(x, y, 300, 180)
+    fill("#215879")
+    triangle(x+300, y+0, x+0, y+0, x+160, y-100)
+    fill("#69D374")
+    ellipse(x+65, y+50, 50, 50)
+    fill("#CEF063")
+    rect(x+200, y+50, 50, 130)
+
 
 # (Elisa Antelmann)
-def drawNothingYet02(x, y):
-    pass
+def drawLadyBird(x, y):
+    noStroke()
+    fill("#F71111") 
+    circle(x, y, 60)
+    
+    stroke(0)
+    fill("#030303")
+    circle(x, y, 15)
+    circle(x+10, y+19, 20)
+    circle(x-19, y+10, 18)
+    circle(x+19, y-10, 16)
+    circle(x-22, y-10, 14)
+
 
 # (Paula Bauer)
 # Malt einen braunen Teddybären
@@ -62,60 +84,169 @@ def drawTeddyBear(x, y):
     fill("#EAD8C0")
     triangle(x-4, y-47.5, x, y-42, x+4, y-47.5)
 
+
 # (Konstantin Bayerl)
-def drawNothingYet04(x, y):
-    pass
+def drawKonstantinsAlien(x, y):
+#Alien
+    drawKoerper(x, y)
+    drawKopf(x, y)
+    drawAuge1(x, y)
+    drawAuge2(x, y)
+    drawFuss1(x, y)
+    drawFuss2(x,y)
+    
+#UFO
+    drawBasis(x,110)
+    drawKuppel(x,100)
+
+#Alie_defenieren   
+
+def drawKoerper(x, y):
+    rectMode(CENTER)
+    fill("#79FF79")
+    rect(x, y, 20, 100)
+        
+def drawKopf(x, y):
+    fill("#79FF79")
+    ellipse(x, y-30,60,60)
+        
+def drawAuge1(x, y):
+    fill("#000000")
+    ellipse(x-19, y-30,16,32)
+        
+def drawAuge2(x, y):
+    fill("#000000")
+    ellipse(x+19, y-30,16,32)
+        
+def drawFuss1(x, y):
+    line(x-10, y+50, x-20, y+60)
+        
+def drawFuss2(x,y):
+    line(x+10, y+50, x+20, y+60)
+    
+#UFO_defienieren
+
+def drawKuppel(x, y):
+    fill("#4EE2EC")
+    #ellipse(x, y, 70, 70)
+    arc(x, y+10, 70, 30, 0, 3)
+    arc(x, y+10, 70, 70, 3, 6.4)
+    
+def drawBasis(x, y):
+    fill("#848482")
+    ellipse(x, y,200,100)
+
 
 # (Mithad Bogner)
-def drawNothingYet05(x, y):
-    pass
+def Zeichnung(x, y):
+    strokeWeight(3)
+    fill("#71FFEB")
+    ellipse(x, y-25, 80, 130)
+    fill("#8DF033") 
+    circle(x, y, 42)
     
-# (Elena Carcamo)
-def drawNothingYet06(x, y):
-    pass
-    
+    # Male ein schwarzes "+"-Zeichen an Position (x, y)
+    stroke(0)
+    fill("#030302")
+    circle(x-10, y-3, 12)
+    circle(x+10, y-3, 12)
+    circle(x, y+10, 6)
+    line(x-30, y-40, x-10, y-20)
+    line(x+30, y-40, x+10, y-20)
+    fill("#5C5C5D")
+    ellipse(x, y+30, 150, 30)      
+    fill("#F01154")
+    circle(x-45, y+30, 6)
+    circle(x, y+30, 6)
+    circle(x+45, y+30, 6)
+
+
 # (Janine Davalos Herrera)
-def drawNothingYet07(x, y):
-    pass
-    
+def drawanalien(x, y, color):
+    fill("#20C9AB")
+    rect(100,100,20,100)
+    ellipse(100,70,60,60)
+    ellipse(81,70,16,32) 
+    ellipse(119,70,16,32) 
+    line(90,150,80,160)
+    line(110,150,120,160)
+
+
 # (Niklas Dünser)
-def drawNothingYet08(x, y):
-    pass
+def drawIllusion(x, y):
+    noStroke()
+    fill("#F7FCF8")
+    circle(x, y, 42)
+    
+    stroke(0)
+    circle(x, y, 52)
+    circle(x, y, 42)
+    circle(x, y, 32)
+    circle(x, y, 22)
+    circle(x, y, 12)
+    circle(x, y, 2)
+
 
 # (Leonie Fehrer)
 def drawLeoniesAlien(x,y):
     
-    rect (x-7, y+28, 20, 100)
+    fill("#C185B9")
+    rect (x-7, y+28, 20, 20)
     ellipse (x, y, 60, 60)
+    ellipse(x+3,y+122, 60,150)
     
     fill("#55244F")
     ellipse (x-15,y,16,32) 
     ellipse (x+15, y, 16, 32) 
+    ellipse(x, y+15, 10, 5)
     
-
-# (Tim Friedrich)
-def drawNothingYet10(x, y):
-    pass
+    fill("#EA1123")
+    ellipse(x-15, y, 5, 20)
+    ellipse(x+15, y, 5, 20)
+    
 
 # (Sven Gruber)
-def drawNothingYet11(x, y):
-    pass
+# Malt das Auge
+def drawEye(x, y):
+    noStroke()
+    fill("#FFFAFA") # white
+    circle(x, y, 45)
     
+    fill("#46B736")
+    circle(x, y, 34)
+    fill("#000000")
+    circle(x, y, 20)
+
+
 # (Jakob Hinterkörner)
-def drawNothingYet12(x, y):
-    pass
-    
-# (Emil Hochradner)
-def drawNothingYet13(x, y):
-    pass
+def drawJakobsAlien(x, y):
+    stroke ("#0000000000")
+    fill("#FF4500") 
+    rectMode(CENTER)
+    rect(x,y,20,100)
+    ellipse(x,y-30,60,60)
+    ellipse(x-19,y-30,16,32) 
+    ellipse(x+19,y-30,16,32)
+    line(x-10,y+50,x-20,y+60)
+    line(x+10,y+50,x+20,y+60)
+
     
 # (Emilia Hochreiter)
-def drawNothingYet14(x, y):
-    pass
+def drawEmiliasAlien(x, y):
+    noStroke()
+    fill("#FF4500")
+    fill("#400808") # "Orange-red"
+    rect(x-10,y+20,20,100)
+    ellipse(x,y,60,60)
+
+    fill("#FF4500")
+    ellipse(x-12,y,16,32) 
+    ellipse(x+12,y,16,32)
     
-# (Florian Kabelka)
-def drawNothingYet15(x, y):
-    pass
+    fill("#030303")
+    line(x-10,y+50,80,160)
+    line(x+10,y+50,120,60)
+
 
 # (Christian Kaukal)
 # definiert wie eine Ente gemalt werden soll; "s" steht für "size" (= Größe)
@@ -130,13 +261,11 @@ def draw_duck(x, y, s):
     fill("#111111")
     ellipse(x+60*s,y-45*s,5*s,5*s)
 
-# (Samuel Kubik)
-def drawNothingYet17(x, y):
-    pass
 
 # (Lena Lorenz)
-def drawHouse(x,y,color):
-    fill(color)
+def drawLenasHouse(x,y,col):
+    rectMode(CORNER)
+    fill(col)
     noStroke()
     square(x,y,90)
     fill("#FF3B3B")
@@ -168,10 +297,26 @@ def drawLadybug(x, y):
     circle(x-8, y-38, 3)
     circle(x+6, y-38, 3)
 
+
 # (Sina Mayr)
-def drawNothingYet20(x, y):
-    pass
+def drawSinasAlien(x, y, col):
+    stroke("#000000")
+    fill(col)
+    rectMode(CENTER)
+    rect(x, y, 20, 100)
+    ellipse(x, y-30, 60, 60)
+    line(x-10, y+50, x-20, y+60)
+    line(x+10, y+50, x+20, y+60)
     
+    fill("#000000")
+    ellipse(x-19, y-30, 16, 32)
+    ellipse(x+19, y-30, 16, 32)
+
+    fill("#FFFFFF")
+    circle(x-20, y-40, 8)
+    circle(x+20, y-40, 8)
+    
+
 # (Nina Müllner)
 def drawNinasAlien(x, y ): 
     stroke(0)
@@ -182,14 +327,32 @@ def drawNinasAlien(x, y ):
     fill("#2595E8")
     ellipse(x-20,y,30,50) 
     ellipse(x+20,y,30,50) 
-    
-# (Andrei Negru)
-def drawNothingYet22(x, y):
-    pass
+
     
 # (Anton Pargfrieder)
-def drawNothingYet23(x, y):
-    pass
+def drawAntonsAlien(x, y):
+    stroke("#000000")
+    fill("#FF4500")
+# Male eine Figur
+    rectMode(CENTER)
+#Arme
+    stroke("#f00000")
+    line(x+20,y,x-10,y-40)
+    line(x+20,y-50,x-20,y) 
+    stroke("#000000")
+
+#Körper
+    rect(x,y,20,100)
+#Kopf und Augen
+    ellipse(x,y-60,60,60)
+    #Change Color
+    fill("#0000ff")
+    ellipse(x-18,y-60,16,32) 
+    ellipse(x+18,y-60,16,32) 
+#Füße
+    stroke("#000000")
+    line(x,y+50,x,y+20)
+
 
 # (Eliabeth Schimana)
 def drawMyCactus(x, y):
@@ -208,15 +371,35 @@ def drawMyCactus(x, y):
     fill("#FFEB03") # "Gelb"
     circle(x+25, y-75, 15)
     
+
 # (Felix Steiner)
-def drawNothingYet25(x, y):
-    pass
-    
-# (Leon Szepe)
-def drawNothingYet26(x, y):
-    pass
+#Kleeblatt mit farbe wird gezeichnet
+def shamrock(x, y):
+    noStroke()
+    fill("#53EA4C") # grün
+    circle(x, y, 42)
+    circle(x, y, 42)
+    circle(x, y-34, 42)
+    circle(x, y+34, 42)
+    circle(x-34, y, 42)
+    circle(x+34, y, 42)
+
     
 # (Sophie Zehetner)
-def drawNothingYet27(x, y):
-    pass
+# Malt eine orange Sonne mit einem "+"-Zeichen in der Mitte
+def drawSunPlus(x, y):
+    noStroke()
+    fill("#FF4500")
+    fill("#FA1919") # "Orange-red"
+
+    rect(x-10,y,20,100)
+    ellipse(x,y,60,60)
+    
+    fill("#344FE0")
+    ellipse(x-15,y,16,32)     
+    ellipse(x+15,y,16,32) 
+    
+    fill("#FA1919")
+    line(x-90,y-150,x-80,y-160)
+    line(x-110,y-150,x-120,y-160)
     
