@@ -72,3 +72,4 @@ def drawAlien(pos):
     line(pos.x-30, pos.y-30, pos.x-15, pos.y-15)
     line(pos.x+30, pos.y-30, pos.x+15, pos.y-15)
     strokeWeight(1)
+

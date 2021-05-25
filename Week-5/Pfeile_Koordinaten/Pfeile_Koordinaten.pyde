@@ -1,5 +1,5 @@
 # Copyright 2021 Roland Richter
-# A vector is, basically, an arrow: it has direction and length
+# Ein Vektor ist ein Pfeil: er hat eine Richtung und eine Länge
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 
 from ShowHelpers import *
 
-# positions of the objects which will be moved
+# Ursprüngliche Positionen der gezeigten Objekte
 firstX, firstY   = 42, 420
 secondX, secondY = 420, 420
 thirdX, thirdY   = 420, 42
@@ -28,46 +28,47 @@ def setup():
 def draw():
     background("#191970") # "MidnightBlue"
 
-    # draw the beginning point (center of frame) and the end
-    # point (at mouse position) in shades of blue
-    beginX, beginY = width/2, height/2
+    # zeichne die Anfangs-Position in der Mitte des Bildes
+    # und die End-Position beim Maus-Zeiger in zwei Blautönen
+    anfX, anfY = width/2, height/2
     endX, endY = mouseX, mouseY
-    showPosition(beginX, beginY, "#4682B4", "B")
-    showPosition(endX,   endY,   "#87CEEB", "E")
+    showPosition(anfX, anfY, "#4682B4", "B")
+    showPosition(endX, endY, "#87CEEB", "E")
     
-    # the vector from beginning point B to end point E is the
-    # difference of "end point" minus "beginning point"
-    beX, beY = endX - beginX, endY - beginY
-    showVector(beginX, beginY, beX, beY, "vector B->E")
+    # der Vektor von Anfangs-Position zu End-Position ist die
+    # Differenz: "End-Position minus Anfangs-Position"
+    aeX, aeY = endX - anfX, endY - anfY
+    showVector(anfX, anfY, aeX, aeY, "Vektor A->E")
 
-    # draw objects both at original and at moved positions
+    # male Objekte an der ursprünglichen Position sowie
+    # um den Vektor aeX, aeY verschoben
     drawAlien(firstX, firstY)
-    drawAlien(firstX + beX, firstY + beY)
-    showVector(firstX, firstY, beX, beY, "vector B->E")
+    drawAlien(firstX + aeX, firstY + aeY)
+    showVector(firstX, firstY, aeX, aeY, "Vektor A->E")
     
     drawAlien(secondX, secondY)
-    drawAlien(secondX + beX, secondY + beY)
-    showVector(secondX, secondY, beX, beY, "vector B->E")
+    drawAlien(secondX + aeX, secondY + aeY)
+    showVector(secondX, secondY, aeX, aeY, "Vektor A->E")
 
     drawAlien(thirdX, thirdY)
-    drawAlien(thirdX + beX, thirdY + beY)
-    showVector(thirdX, thirdY, beX, beY, "vector B->E")
+    drawAlien(thirdX + aeX, thirdY + aeY)
+    showVector(thirdX, thirdY, aeX, aeY, "Vektor A->E")
 
 
-# Draws Ellen, the Alien, at the given position (x, y)
+# Malt Ellen, den Alien, an der Position (x, y)
 def drawAlien(x, y):
-    # draw the head
+    # male den Kopf
     strokeWeight(2)
     stroke(0)
     fill("#32CD32")
     circle(x, y, 42)
     
-    # draw both eyes
+    # male beide Augen
     fill("#FFD700")
     circle(x-10, y-10, 12)
     circle(x+10, y-10, 12)
     
-    # draw mouth and antennas
+    # male Mund und Fühler
     line(x-6, y+10, x+6, y+10)
     line(x-30, y-30, x-15, y-15)
     line(x+30, y-30, x+15, y-15)
