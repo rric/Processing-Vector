@@ -32,7 +32,7 @@ def draw():
     # und die End-Position beim Maus-Zeiger in zwei Blautönen
     anfX, anfY = width/2, height/2
     endX, endY = mouseX, mouseY
-    showPosition(anfX, anfY, "#4682B4", "B")
+    showPosition(anfX, anfY, "#4682B4", "A")
     showPosition(endX, endY, "#87CEEB", "E")
     
     # der Vektor von Anfangs-Position zu End-Position ist die

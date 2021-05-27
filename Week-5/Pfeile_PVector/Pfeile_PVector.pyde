@@ -32,7 +32,7 @@ def draw():
     # und die End-Position beim Maus-Zeiger in zwei Blautönen
     anfPos = PVector(width/2, height/2)
     endPos = PVector(mouseX, mouseY)
-    showPosition(anfPos, "#4682B4", "B")
+    showPosition(anfPos, "#4682B4", "A")
     showPosition(endPos, "#87CEEB", "E")
     
     # der Vektor von Anfangs-Position zu End-Position ist die
@@ -55,6 +55,10 @@ def draw():
     showVector(thirdPos, aeVec, "Vektor A->E")
 
 
+# HAUSÜBUNG Ändere deine Funktion `drawSomething(x, y)` in
+#   `drawSomething(pos)` ab und verwende sie an dieser Stelle 
+#   statt `drawAlien(pos)`.
+
 # Malt Ellen, den Alien, an der Position pos
 def drawAlien(pos):
     # male den Kopf
@@ -73,4 +77,3 @@ def drawAlien(pos):
     line(pos.x-30, pos.y-30, pos.x-15, pos.y-15)
     line(pos.x+30, pos.y-30, pos.x+15, pos.y-15)
     strokeWeight(1)
-    
