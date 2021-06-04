@@ -16,7 +16,7 @@
 
 
 # Draws a circle with a "+" mark, "Orange-red" by default,
-# and places a letter nearby the "+" mark
+# and places the given letter nearby the "+" mark
 def showPosition(pos, col = "#FF4500", letter = ""):
     noStroke()
     fill(col)
@@ -35,29 +35,27 @@ def showPosition(pos, col = "#FF4500", letter = ""):
         text(letter, pos.x+2, pos.y)
 
 
-
-
 # Draws the vector vec as an arrow -->, from the begining point 
-# begP to the end point, and places a label to the middle of it
-def showVector(begP, vec, label=""):
-    endP = begP + vec
+# begPos to the end point, and places a label to the middle of it
+def showVector(begPos, vec, label=""):
+    endPos = begPos + vec
 
     # the arrow head is drawn as a triangle; compute the coordinates
     # of its points here
     angle = PVector(vec.x, -vec.y).heading()
-    leftEnd = endP - 15 * PVector.fromAngle(-angle + 0.4)
-    rightEnd = endP - 15 * PVector.fromAngle(-angle - 0.4)
+    leftEnd = endPos - 15 * PVector.fromAngle(-angle + 0.4)
+    rightEnd = endPos - 15 * PVector.fromAngle(-angle - 0.4)
 
     stroke(255)
     fill(255)
-    line(begP.x, begP.y, endP.x, endP.y)
-    triangle(endP.x, endP.y, leftEnd.x, leftEnd.y, rightEnd.x, rightEnd.y)
+    line(begPos.x, begPos.y, endPos.x, endPos.y)
+    triangle(endPos.x, endPos.y, leftEnd.x, leftEnd.y, rightEnd.x, rightEnd.y)
 
     # translate, rotate, and center the label w.r.t. the arrow
     if label:
         pushMatrix()
         
-        translate(lerp(begP.x, endP.x, 0.5), lerp(begP.y, endP.y, 0.5))
+        translate(lerp(begPos.x, endPos.x, 0.5), lerp(begPos.y, endPos.y, 0.5))
         if angle > -HALF_PI and angle < HALF_PI:
             rotate(-angle)
         else:
