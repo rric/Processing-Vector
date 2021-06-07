@@ -23,7 +23,8 @@ def showPosition(pos, col = "#FF4500", letter = ""):
     fill(col)
     circle(pos.x, pos.y, 42)
     
-    # draw a black "+" mark at position (x, y)
+    # draw a black "+" mark at position pos
+    strokeWeight(1)
     stroke(0)
     fill(0)
     line(pos.x-8, pos.y, pos.x+8, pos.y)
@@ -48,10 +49,10 @@ def showPositions(posList, col = "#FF4500", labelList = []):
                      labelList[k] if k < len(labelList) else "")
         
 
-# Draws the vector vec as an arrow -->, from the begining point 
-# begPos to the end point, and places a label to the middle of it
-def showVector(begPos, vec, label=""):
-    endPos = begPos + vec
+# Draws a vector as an arrow --> from the begining point begPos to
+# the end point endPos, and places a label at the middle of it
+def showVector(begPos, endPos, label="", bright=255, weight=1):
+    vec = endPos - begPos
 
     # the arrow head is drawn as a triangle; compute the coordinates
     # of its points here
@@ -59,8 +60,9 @@ def showVector(begPos, vec, label=""):
     leftEnd = endPos - 15 * PVector.fromAngle(-angle + 0.4)
     rightEnd = endPos - 15 * PVector.fromAngle(-angle - 0.4)
 
-    stroke(255)
-    fill(255)
+    strokeWeight(weight)
+    stroke(bright)
+    fill(bright)
     line(begPos.x, begPos.y, endPos.x, endPos.y)
     triangle(endPos.x, endPos.y, leftEnd.x, leftEnd.y, rightEnd.x, rightEnd.y)
 
@@ -85,6 +87,17 @@ def showVector(begPos, vec, label=""):
 # Draws a sequence of vectors, from one position to the next
 def showVectors(posList, labelList = []):
     n = len(posList)
+    
     for k in range(n-1):
-        showVector(posList[k], posList[k+1] - posList[k],
-              labelList[k] if k < len(labelList) else "")
+        lerpedBright = lerpColor(64, 255, (k+1)/n)
+        showVector(posList[k], posList[k+1],
+              labelList[k] if k < len(labelList) else "",
+              lerpedBright)
+        
+    if n > 2:
+        lbl = labelList[0] if 0 < len(labelList) else "?"
+        for k in range(1,n-1):
+            lbl += " + " + labelList[k] if k < len(labelList) else "?"
+
+        showVector(posList[0], posList[-1], lbl, 255, 3)
+        
