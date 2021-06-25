@@ -79,8 +79,8 @@ def showVector(begPos, endPos, label="", bright=255, weight=1):
         textSize(14)
         textAlign(CENTER, CENTER)
         text(label, 0, -9)
-        text("(" + nfp(int(vec.x), 0) + "," 
-                 + nfp(int(vec.y), 0) + ")", 0, 9)
+        text("(" + nfp(vec.x, 1, 4) + ";" 
+                 + nfp(vec.y, 1, 4) + ")", 0, 9)
         popMatrix()
         
         
@@ -99,5 +99,5 @@ def showVectors(posList, labelList = []):
         for k in range(1,n-1):
             lbl += " + " + labelList[k] if k < len(labelList) else ""
 
-        showVector(posList[0], posList[-1], lbl, 255, 3)
+        # showVector(posList[0], posList[-1], lbl, 255, 3)
         

@@ -35,10 +35,12 @@ objectPos = PVector(0,0)
 objectPosList = []
 speedVec = PVector(0,0)
 gravityVec = PVector(0,50)
-
+SunPos = PVector(0,0)
 
 def setup():
-    size(800, 600)
+    global SunPos
+    size(960, 720)
+    SunPos = PVector(width/2, height/2)
     frameRate(5)
 
 
@@ -67,7 +69,7 @@ def mouseReleased():
         
         
 def draw():
-    global objectPos, objectPosList, speedVec
+    global objectPos, objectPosList, gravityVec, speedVec
     
     background("#191970") # MidnightBlue
 
@@ -77,12 +79,17 @@ def draw():
     elif state == Aim:
         txt = "Zielen ... v = " + nf(speedVec.mag(), 1, 1) + " px/s"
     elif state == Flying:
-        txt = "Fliegen! v = " + nf(speedVec.mag(), 1, 1) + " px/s"
-        
+        txt = "Fliegen! "
+        txt += " d = " + nf(PVector.dist(objectPos, SunPos), 1, 1) + " px,"
+        txt += " v = " + nf(speedVec.mag(), 1, 1) + " px/s"
+    
+    textAlign(LEFT, CENTER)
     textSize(16)
     fill(255)
     text(txt, 8, height-20)
 
+    showPosition(SunPos, "#FFFF00", letter = "S")
+    
     if state == Ready:
         drawSomething(objectNum, PVector(mouseX, mouseY))
         
@@ -96,6 +103,17 @@ def draw():
         # TODO Beschreibe mit eigenen Worten, wie die neue Position
         #   hier berechnet wird.
         factor = 1./frameRate
+        
+        gravityFactor = 1./(PVector.dist(objectPos, SunPos)**2)
+        gravityMag = 5000000. * gravityFactor
+        gravityVec = (SunPos - objectPos).setMag(gravityMag)
+        
+        # print(" factor: " + nf(gravityFactor, 1, 10) + 
+        #       " => magnitude: " + nf(gravityMag, 1, 1))
+        # print(gravityVec)
+        
+        showVector(SunPos - gravityVec, SunPos, "F", 0, 3)
+        
         speedVec += factor * gravityVec
         objectPos += factor * speedVec
         
@@ -107,10 +125,3 @@ def draw():
         showVectors(objectPosList)
         drawSomething(objectNum, objectPos)
         
-        # Pralle vom unteren Rand des Fensters ab
-        if objectPos.y > height:
-            speedVec.y = -speedVec.y
-            
-        # TODO Die Figur prallt derzeit nur vom unteren Rand ab.
-        #   Erweitere das Programm so, dass die Figur von *allen*
-        #   Rändern abprallt.
