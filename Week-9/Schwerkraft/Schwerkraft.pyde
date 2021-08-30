@@ -29,6 +29,7 @@ from Collection import *
 #        berechnet; alle bisherigen Positionen werden angezeigt.
 Ready, Aim, Flying = range(3)
 state = Ready
+maxPosListLen = 25
 
 objectNum = int(random(1,26))
 objectPos = PVector(0,0)
@@ -36,6 +37,7 @@ objectPosList = []
 speedVec = PVector(0,0)
 gravityVec = PVector(0,50)
 SunPos = PVector(0,0)
+
 
 def setup():
     global SunPos
@@ -62,19 +64,27 @@ def mousePressed():
         
         
 def mouseReleased():
-    global state, objectPosList, speedVec 
+    global state, maxPosListLen, objectPosList, speedVec 
     
     # linke Maustaste losgelassen: fliege los!
     if mouseButton == LEFT and state == Aim:
         
         objectPosList = [copy.copy(objectPos)]
         speedVec = objectPos - PVector(mouseX, mouseY)
+        
         state = Flying
+        maxPosListLen = 25
         
         # Ready und Aim: frame rate 60; Flying: frame rate 5
         frameRate(5)
         
         
+def mouseWheel(event):
+    global maxPosListLen
+    e = event.getCount()
+    maxPosListLen = max(0, maxPosListLen + event.getCount())
+
+
 def draw():
     global objectPos, objectPosList, gravityVec, speedVec
     
@@ -125,6 +135,9 @@ def draw():
         
         # Füge (eine Kopie der neuen) Position zur Liste hinzu ...
         objectPosList.append(copy.copy(objectPos))
+
+        while len(objectPosList) > maxPosListLen:
+            objectPosList.pop(0)
 
         # ... und zeichne die gesamte Liste.
         showPositions(objectPosList)
