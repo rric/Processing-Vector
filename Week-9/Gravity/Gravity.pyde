@@ -41,7 +41,9 @@ def setup():
     global SunPos
     size(960, 720)
     SunPos = PVector(width/2, height/2)
-    frameRate(5)
+    
+    # Ready and Aim: frame rate 60; Flying: frame rate 5
+    frameRate(60)
 
 
 def mousePressed():
@@ -54,6 +56,7 @@ def mousePressed():
         
     # if right mouse button pressed: re-start game
     if mouseButton == RIGHT:
+        frameRate(60)
         objectNum = int(random(1,26))
         state = Ready
         
@@ -63,9 +66,13 @@ def mouseReleased():
     
     # if left mouse button released: start to fly!
     if mouseButton == LEFT and state == Aim:
+        
         objectPosList = [copy.copy(objectPos)]
         speedVec = objectPos - PVector(mouseX, mouseY)
         state = Flying
+        
+        # Ready and Aim: frame rate 60; Flying: frame rate 5
+        frameRate(5)
         
         
 def draw():
@@ -99,14 +106,15 @@ def draw():
         showVector(objectPos, objectPos + speedVec)
         
     elif state == Flying:
-        # Calculate the new position
-        factor = 1./frameRate
+        # cannot use frameRate here, as it is *averaged* over several frames
+        factor = 1./5.
         
+        # Calculate the new position
         gravityFactor = 1./(PVector.dist(objectPos, SunPos)**2)
         gravityMag = 5000000. * gravityFactor
         gravityVec = (SunPos - objectPos).setMag(gravityMag)
-        
-        # print(" factor: " + nf(gravityFactor, 1, 10) + 
+    
+        # print(" gravity factor: " + nf(gravityFactor, 1, 10) + 
         #       " => magnitude: " + nf(gravityMag, 1, 1))
         # print(gravityVec)
         
