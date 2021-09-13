@@ -64,7 +64,15 @@ class FlyingObject:
             self.posList.pop(0)
         
 
-flying = FlyingObject()
+flying = []
+
+selection = [2,3,5,15,17,18,22]
+
+# authors: 2 - Elisa Antelmann, 3 - Paula Maria Bauer, 
+#          5 - Mithad Jan Bogner, 15 - Christian Kaukal,
+#         17 - Luisa Mayr, 18 - Sina Mayr, 22 - Eliabeth Schimana
+
+nextNum = selection[int(random(len(selection)))]
 mousePressedPos = PVector(0,0)
 
 
@@ -74,12 +82,11 @@ def setup():
     size(960, 720)
     centerPos = PVector(width/2, height/2)
     
-    # Ready and Aim: frame rate 60; Flying: frame rate 5
-    frameRate(60)
+    frameRate(5)
 
 
 def mousePressed():
-    global state, mousePressedPos, flying
+    global state, nextNum, mousePressedPos, flying
     
     # if left mouse button pressed: start to aim
     if mouseButton == LEFT and state == Ready:
@@ -88,23 +95,19 @@ def mousePressed():
         
     # if right mouse button pressed: re-start game
     if mouseButton == RIGHT:
-        frameRate(60)
-        flying = FlyingObject(int(random(1,26)))
+        nextNum = selection[int(random(len(selection)))]
         state = Ready
         
         
 def mouseReleased():
-    global state, flying, maxPosListLen
+    global state, flying
     
     # if left mouse button released: start to fly!
     if mouseButton == LEFT and state == Aim:
-        flying.startFlying(PVector(mouseX, mouseY), mousePressedPos)
+        flying.append(FlyingObject(nextNum))
+        flying[-1].startFlying(PVector(mouseX, mouseY), mousePressedPos)
         state = Flying
-        maxPosListLen = 25
-        
-        # Ready and Aim: frame rate 60; Flying: frame rate 5
-        frameRate(5)
-        
+
         
 def mouseWheel(event):
     global maxPosListLen
@@ -121,11 +124,11 @@ def draw():
     if state == Ready:
         txt = "Ready ..."
     elif state == Aim:
-        txt = "Aim ... v = " + nf(flying.speedVec.mag(), 1, 1) + " px/s"
+        txt = "Aim ... "
     elif state == Flying:
         txt = "Fly! "
-        txt += " d = " + nf(PVector.dist(flying.pos, centerPos), 1, 1) + " px,"
-        txt += " v = " + nf(flying.speedVec.mag(), 1, 1) + " px/s"
+        txt += " d = " + nf(PVector.dist(flying[-1].pos, centerPos), 1, 1) + " px,"
+        txt += " v = " + nf(flying[-1].speedVec.mag(), 1, 1) + " px/s"
     
     textAlign(LEFT, CENTER)
     textSize(16)
@@ -135,23 +138,21 @@ def draw():
     showPosition(centerPos, "#FFFF00", letter = "S")
     
     if state == Ready:
-        drawSomething(flying.num, PVector(mouseX, mouseY))
+        drawSomething(nextNum, PVector(mouseX, mouseY))
         
     elif state == Aim:
-        drawSomething(flying.num, mousePressedPos)
+        drawSomething(nextNum, mousePressedPos)
         distVec = mousePressedPos - PVector(mouseX, mouseY)
         showVector(mousePressedPos, mousePressedPos + distVec)
         
-    elif state == Flying:
-        # cannot use frameRate here, as it is *averaged* over several frames
-        factor = 1./5.
-        
-        flying.updateFlying(centerPos, factor)
-        
-        showVector(centerPos - flying.gravityVec, centerPos, "F", 0, 3)
+
+    for f in flying:
+        f.updateFlying(centerPos, 1./5.)
+    
+        showVector(centerPos - f.gravityVec, centerPos, "F", 0, 3)
 
         # ... and draw the complete list.
-        showPositions(flying.posList)
-        showVectors(flying.posList)
-        drawSomething(flying.num, flying.pos)
+        showPositions(f.posList)
+        showVectors(f.posList)
+        drawSomething(f.num, f.pos)
         
