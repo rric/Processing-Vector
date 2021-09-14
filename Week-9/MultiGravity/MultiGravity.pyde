@@ -118,7 +118,7 @@ def mouseWheel(event):
 def draw():
     global flying
     
-    background("#191970") # MidnightBlue
+    background("#FFFFFF") # white
 
     txt = ""
     if state == Ready:
@@ -143,13 +143,15 @@ def draw():
     elif state == Aim:
         drawSomething(nextNum, mousePressedPos)
         distVec = mousePressedPos - PVector(mouseX, mouseY)
-        showVector(mousePressedPos, mousePressedPos + distVec)
+        showVector(mousePressedPos, 
+                   mousePressedPos + distVec,
+                   "", 32, 2)
         
 
     for f in flying:
         f.updateFlying(centerPos, 1./5.)
     
-        showVector(centerPos - f.gravityVec, centerPos, "F", 0, 3)
+        showVector(centerPos - f.gravityVec, centerPos, "F", 64, 1)
 
         # ... and draw the complete list.
         showPositions(f.posList)
