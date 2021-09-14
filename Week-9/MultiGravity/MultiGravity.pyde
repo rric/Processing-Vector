@@ -33,6 +33,9 @@ state = Ready
 centerPos = PVector(0,0)
 maxPosListLen = 25
 
+showText = True
+showGravityVec = True
+
 class FlyingObject:
     def __init__(self, n = 0):
         self.num = int(random(1,26)) if n == 0 else n
@@ -115,25 +118,34 @@ def mouseWheel(event):
     maxPosListLen = max(0, maxPosListLen + event.getCount())
 
 
+def keyPressed():
+    global showText, showGravityVec
+    if key == 't' or key == 'T':
+        showText = not showText
+    if key == 'g' or key == 'G':
+        showGravityVec = not showGravityVec
+
+
 def draw():
     global flying
     
     background("#FFFFFF") # white
 
-    txt = ""
-    if state == Ready:
-        txt = "Ready ..."
-    elif state == Aim:
-        txt = "Aim ... "
-    elif state == Flying:
-        txt = "Fly! "
-        txt += " d = " + nf(PVector.dist(flying[-1].pos, centerPos), 1, 1) + " px,"
-        txt += " v = " + nf(flying[-1].speedVec.mag(), 1, 1) + " px/s"
-    
-    textAlign(LEFT, CENTER)
-    textSize(16)
-    fill(255)
-    text(txt, 8, height-20)
+    if showText:
+        txt = ""
+        if state == Ready:
+            txt = "Ready ..."
+        elif state == Aim:
+            txt = "Aim ... "
+        elif state == Flying:
+            txt = "Fly! "
+            txt += " d = " + nf(PVector.dist(flying[-1].pos, centerPos), 1, 1) + " px,"
+            txt += " v = " + nf(flying[-1].speedVec.mag(), 1, 1) + " px/s"
+        
+        textAlign(LEFT, CENTER)
+        textSize(16)
+        fill(32)
+        text(txt, 8, height-20)
 
     showPosition(centerPos, "#FFFF00", letter = "S")
     
@@ -151,7 +163,8 @@ def draw():
     for f in flying:
         f.updateFlying(centerPos, 1./5.)
     
-        showVector(centerPos - f.gravityVec, centerPos, "F", 64, 1)
+        if showGravityVec:
+            showVector(centerPos - f.gravityVec, centerPos, "F", 64, 1)
 
         # ... and draw the complete list.
         showPositions(f.posList)
