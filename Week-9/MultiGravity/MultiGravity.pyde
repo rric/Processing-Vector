@@ -18,6 +18,9 @@ import copy
 from ShowHelpers import *
 from Collection import *
 
+add_library('pdf')
+add_library('svg')
+
 # User interaction depends on three states:
 # - Ready: the shape is displayed at the current mouse position
 # - Aim: when the left mouse button is pressed, the shape is 
@@ -35,6 +38,9 @@ maxPosListLen = 25
 
 showText = True
 showGravityVec = True
+
+saveAsPDF = False
+saveAsSVG = False
 
 class FlyingObject:
     def __init__(self, n = 0):
@@ -69,11 +75,16 @@ class FlyingObject:
 
 flying = []
 
-selection = [2,3,5,15,17,18,22]
+selection = [2,3,5,15,17,18,21,22]
 
-# authors: 2 - Elisa Antelmann, 3 - Paula Maria Bauer, 
-#          5 - Mithad Jan Bogner, 15 - Christian Kaukal,
-#         17 - Luisa Mayr, 18 - Sina Mayr, 22 - Eliabeth Schimana
+# authors: 2 - Elisa Antelmann, 
+#          3 - Paula Maria Bauer, 
+#          5 - Mithad Jan Bogner, 
+#         15 - Christian Kaukal,
+#         17 - Luisa Mayr, 
+#         18 - Sina Mayr, 
+#         21 - Anton Pargfrieder, 
+#         22 - Eliabeth Schimana
 
 nextNum = selection[int(random(len(selection)))]
 mousePressedPos = PVector(0,0)
@@ -119,15 +130,25 @@ def mouseWheel(event):
 
 
 def keyPressed():
-    global showText, showGravityVec
+    global showText, showGravityVec, saveAsPDF, saveAsSVG
+    
     if key == 't' or key == 'T':
         showText = not showText
     if key == 'g' or key == 'G':
         showGravityVec = not showGravityVec
+    if key == 'p' or key == 'P':
+        saveAsPDF = True        
+    if key == 's' or key == 'S':
+        saveAsSVG = True
 
 
 def draw():
-    global flying
+    global flying, saveAsPDF, saveAsSVG
+    
+    if saveAsPDF:
+        beginRecord(PDF, "gravity.pdf")
+    elif saveAsSVG:
+        beginRecord(SVG, "gravity.svg")
     
     background("#FFFFFF") # white
 
@@ -158,7 +179,6 @@ def draw():
         showVector(mousePressedPos, 
                    mousePressedPos + distVec,
                    "", 32, 2)
-        
 
     for f in flying:
         f.updateFlying(centerPos, 1./5.)
@@ -171,3 +191,9 @@ def draw():
         showVectors(f.posList)
         drawSomething(f.num, f.pos)
         
+    if saveAsPDF:
+        endRecord()
+        saveAsPDF = False
+    elif saveAsSVG:
+        endRecord()
+        saveAsSVG = False
