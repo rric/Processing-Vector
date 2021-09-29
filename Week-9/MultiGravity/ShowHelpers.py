@@ -39,8 +39,7 @@ def showPosition(pos, col = "#FF4500", letter = ""):
 
 # Draws a sequence of circles at the given positions, with colors
 # lerped from gray to the given color
-def showPositions(posList, col = "#FF4500", labelList = []):
-    gray = color(64, 64, 64)
+def showPositions(posList, col = "#FF4500", gray = "#404040", labelList = []):
     n = len(posList)
     
     for k in range(n):

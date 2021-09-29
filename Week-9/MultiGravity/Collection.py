@@ -340,11 +340,11 @@ def draw_duck(pos, s):
     noStroke()
     fill("#ffec3d")
     ellipse(pos.x+75*s,pos.y-45*s,30*s,10*s)
-    fill("#100c08") # smokey black, almost inverse of "#ffffff"
+    fill("#ffffff")
     ellipse(pos.x+0*s,pos.y+0*s,100*s,50*s)
     ellipse(pos.x+50*s,pos.y-40*s,60*s,35*s)
     ellipse(pos.x+28*s,pos.y-20*s,20*s,60*s)
-    fill("#eeeeee") # inverse of "#111111"
+    fill("#111111")
     ellipse(pos.x+60*s,pos.y-45*s,5*s,5*s)
 
 

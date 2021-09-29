@@ -38,6 +38,7 @@ maxPosListLen = 25
 
 showText = True
 showGravityVec = True
+whiteBackground = True
 
 saveAsPDF = False
 saveAsSVG = False
@@ -130,12 +131,14 @@ def mouseWheel(event):
 
 
 def keyPressed():
-    global showText, showGravityVec, saveAsPDF, saveAsSVG
+    global showText, showGravityVec, whiteBackground, saveAsPDF, saveAsSVG
     
     if key == 't' or key == 'T':
         showText = not showText
     if key == 'g' or key == 'G':
         showGravityVec = not showGravityVec
+    if key == 'b' or key == 'B':
+        whiteBackground = not whiteBackground        
     if key == 'p' or key == 'P':
         saveAsPDF = True        
     if key == 's' or key == 'S':
@@ -150,7 +153,10 @@ def draw():
     elif saveAsSVG:
         beginRecord(SVG, "gravity.svg")
     
-    background("#FFFFFF") # white
+    if whiteBackground:
+        background("#FFFFFF") # white
+    else:
+        background("#191970") # MidnightBlue
 
     if showText:
         txt = ""
@@ -168,7 +174,9 @@ def draw():
         fill(32)
         text(txt, 8, height-20)
 
-    showPosition(centerPos, "#FFFF00", letter = "S")
+    showPosition(centerPos, 
+                 "#FF2200" if whiteBackground else "#FFFF00", 
+                 letter = "S")
     
     if state == Ready:
         drawSomething(nextNum, PVector(mouseX, mouseY))
@@ -178,16 +186,20 @@ def draw():
         distVec = mousePressedPos - PVector(mouseX, mouseY)
         showVector(mousePressedPos, 
                    mousePressedPos + distVec,
-                   "", 32, 2)
+                   "", 32 if whiteBackground else 255, 2)
 
     for f in flying:
         f.updateFlying(centerPos, 1./5.)
     
         if showGravityVec:
-            showVector(centerPos - f.gravityVec, centerPos, "F", 64, 1)
+            showVector(centerPos - f.gravityVec, 
+                       centerPos, 
+                       "F", 64 if whiteBackground else 0, 1)
 
         # ... and draw the complete list.
-        showPositions(f.posList)
+        showPositions(f.posList, 
+                      "#FF4500", 
+                      "#C0C0C0" if whiteBackground else "#404040" ,)
         showVectors(f.posList)
         drawSomething(f.num, f.pos)
         
